@@ -33,6 +33,15 @@ class PlayListForm extends Component {
       alert('Thank you, ' + this.state.userName + ' your name was submitted');
   }
 
+  fetchData = (e) => {
+      e.preventDefault();
+      fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
+        return results.json();
+      }).then(data => {
+        this.setState({songs: data});
+      })
+    }
+
   addToList = (e) => {
       e.preventDefault();
       this.setState({userName: e.target.value, songTitle: e.target.value, songArtist: e.target.value, songNotes: e.target.value});
@@ -60,16 +69,16 @@ class PlayListForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           User Name:
-          <input onChange={this.handleUserNameChange} userName='userName' type="text" value={this.state.username}/>
+          <input onChange={this.handleUserNameChange} userName='userName' type="text" value={this.state.userName}/>
             <br />
           Artist / Band:
-          <input onChange={this.handleArtistBandChange} songArtist="artistband" type="text" value={this.state.artistband}/>
+          <input onChange={this.handleArtistBandChange} songArtist="songArtist" type="text" value={this.state.songArtist}/>
             <br />
           Song Title:
-          <input onChange={this.handleSongTitleChange} songTitle="songtitle" type="text" value={this.state.songtitle}/>
+          <input onChange={this.handleSongTitleChange} songTitle="songtitle" type="text" value={this.state.songTitle}/>
             <br />
           Notes about Song:
-          <input onChange={this.handleNotesAboutSongChange} songNotes="notesaboutsong" type="text" value={this.state.notesaboutsong}/>
+          <input onChange={this.handleNotesAboutSongChange} songNotes="songNotes" type="text" value={this.state.songNotes}/>
         </label>
             <br />
         <input type="submit" value="Submit" />

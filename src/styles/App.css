@@ -1,24 +1,54 @@
 .App {
-  text-align: center;
+  background-color: lightgrey;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.title {
   height: 80px;
+  padding-top: 20px;
+  background-color: black;
+  vertical-align: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.my-header {
+  text-align: center;
+  font-size: 40px;
+  color: red;
+  text-shadow: 2px 2px 5px grey;
+  animation: shake infinite 5s linear;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.quake-list {
+  padding-top: 30px;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.earthquake-title {
   color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  text-shadow: 1px 1px 1px black;
+  font-size: 30px;
+  text-align: center;
+  height: 200px;
+  background-image: url('http://www.sanandreasfault.org/4020_A.jpg');
+  background-position: center;
 }

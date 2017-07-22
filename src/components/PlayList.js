@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
 
 class PlayList extends Component  {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            playlisting: []
-        }
+            songs: [],
+            userName: '',
+            songArtist: '',
+            songTitle: '',
+            songNotes: ''
+        };
     }
 
     componentDidMount() {
-        fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then((response) => {
-          return response.json()
-        }).then((data) => {
-          let songs = data.results;
-          console.log(songs)
-          this.setState({songs: songs})
-        })
+      fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
+            return results.json();
+          }).then(data => {
+            this.setState({songs: data});
+            console.log("state", this.state.songs);
+          })
       }
 
       render() {
         let songArray = this.state.songs;
         let songs = songArray.map((songs) => {
           return (
-            <div key = {songs.name} className = "col-md-4">
-
+            <div key = {songs.id} className = "col-md-4">
+              <div className="card" >
+                <div className="card-block">
+                  <h6 className="card-subtitle mb-2 text-muted">User Name: {songs.userName}</h6>
+                  <h6 className="card-subtitle mb-2 text-muted">Artist / Band Name: {songs.songArtist}</h6>
+                  <h6 className="card-subtitle mb-2 text-muted">Song Title: {songs.songTitle}</h6>
+                  <h6 className="card-subtitle mb-2 text-muted">Song Notes: {songs.songNotes}</h6>
+                </div>
+              </div>
             </div>
 
           )
@@ -32,8 +42,12 @@ class PlayList extends Component  {
         return (
           <div className="App">
             {}
-            Song Display
+            <div className="jumbotron">
+              <h1 className="dislpay-3">Song List</h1>
+            </div>
+            <div className="row">
             {songs}
+          </div>
           </div>
 
 
