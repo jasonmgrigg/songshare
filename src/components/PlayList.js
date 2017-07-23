@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class PlayList extends Component  {
     constructor(props) {
         super(props)
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             songs: [],
             userName: '',
@@ -10,6 +11,9 @@ class PlayList extends Component  {
             songTitle: '',
             songNotes: ''
         };
+    }
+    handleSubmit(event){
+      event.preventDefault();
     }
 
     componentDidMount() {
@@ -25,6 +29,7 @@ class PlayList extends Component  {
         let songArray = this.state.songs;
         let songs = songArray.map((songs) => {
           return (
+
             <div key = {songs.id} className = "col-md-4">
               <div className="card" >
                 <div className="card-block">
@@ -42,12 +47,14 @@ class PlayList extends Component  {
         return (
           <div className="App">
             {}
-            <div className="jumbotron">
+            <div onSubmit={this.handleSubmit} className="jumbotron">
               <h1 className="dislpay-3">Song List</h1>
+              <input type="submit" value="Refresh Data" />
             </div>
             <div className="row">
             {songs}
           </div>
+
           </div>
 
 
