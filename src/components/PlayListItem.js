@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 class PlayListItem extends Component {
+
   render() {
-    let cards = this.props.songs.map(song => {
+    let songInfo = this.props.songs.map(song => {
       return (
         <ul className="card" key={song._id}>
           <li>
@@ -12,17 +13,17 @@ class PlayListItem extends Component {
             Artist/Band: {song.songArtist}
           </li>
           <li>
-            Title: {song.songTitle}
+            Song Title: {song.songTitle}
           </li>
           <li>
-            Notes: {song.songNotes}
+            Song Notes: {song.songNotes}
           </li>
         </ul>
       );
     });
     return (
       <div className="card">
-        {cards}
+        {songInfo}
       </div>
     );
   }

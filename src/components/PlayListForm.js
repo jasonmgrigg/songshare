@@ -78,34 +78,11 @@ class PlayListForm extends Component {
           <input className="notesForm" onChange={this.handleNotesAboutSongChange} type="text" value={this.state.songNotes}/>
         </div>
         <input className="infoSubButton" type="submit" value="Submit" onClick={this.addToList} />
-        
+
       </form>
 
     )
   }
 }
-
-//   render() {
-//     return (
-//       <form className="userinput" onSubmit={this.handleSubmit}>
-//         <label>
-//           User Name:
-//           <input className="userForm" onChange={this.handleUserNameChange} userName='userName' type="text" value={this.state.userName}/>
-//             <br />
-//           Artist / Band:
-//           <input className="artistForm" onChange={this.handleArtistBandChange} songArtist="songArtist" type="text" value={this.state.songArtist}/>
-//             <br />
-//           Song Title:
-//           <input className="titleForm" onChange={this.handleSongTitleChange} songTitle="songtitle" type="text" value={this.state.songTitle}/>
-//             <br />
-//           Notes about Song:
-//           <input className="notesForm" onChange={this.handleNotesAboutSongChange} songNotes="songNotes" type="text" value={this.state.songNotes}/>
-//         </label>
-//             <br />
-//         <input className="infoSubButton" type="submit" value="Submit" />
-//       </form>
-//     )
-//   }
-// }
 
 export default PlayListForm;
