@@ -4,17 +4,16 @@
 
 .title {
   height: 80px;
-  padding-top: 20px;
+  padding-top: 2px;
   background-color: black;
   vertical-align: center;
 }
 
 .my-header {
   text-align: center;
-  font-size: 40px;
-  color: red;
+  font-size: 60px;
+  color: green;
   text-shadow: 2px 2px 5px grey;
-  animation: shake infinite 5s linear;
 }
 @keyframes shake {
   10%, 90% {
@@ -49,6 +48,34 @@
   font-size: 30px;
   text-align: center;
   height: 200px;
-  background-image: url('http://www.sanandreasfault.org/4020_A.jpg');
   background-position: center;
+}
+
+.userinput {
+  font-size: 20px;
+}
+
+.userForm {
+  margin-left: 70px;
+}
+
+.artistForm {
+  margin-left: 63px;
+}
+
+.titleForm {
+  margin-left: 82px;
+}
+
+.notesForm {
+  margin-left: 11px;
+}
+
+.infoSubButton {
+  margin-left: 178px;
+  width: 212px;
+}
+
+ul {
+  list-style-type: none;
 }

@@ -8,7 +8,6 @@ class PlayListForm extends Component {
     this.handleArtistBandChange = this.handleArtistBandChange.bind(this);
     this.handleSongTitleChange = this.handleSongTitleChange.bind(this);
     this.handleNotesAboutSongChange = this.handleNotesAboutSongChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {userName: ''};
     this.state = {songArtist: ''};
@@ -28,23 +27,10 @@ class PlayListForm extends Component {
   handleNotesAboutSongChange(event){
     this.setState({songNotes: event.target.value});
   }
-  handleSubmit(event){
+
+  addToList = (event) => {
       event.preventDefault();
-      alert('Thank you, ' + this.state.userName + ' your name was submitted');
-  }
-
-  fetchData = (e) => {
-      e.preventDefault();
-      fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
-        return results.json();
-      }).then(data => {
-        this.setState({songs: data});
-      })
-    }
-
-  addToList = (e) => {
-      e.preventDefault();
-      this.setState({userName: e.target.value, songTitle: e.target.value, songArtist: e.target.value, songNotes: e.target.value});
+      this.setState({userName: event.target.value, songTitle: event.target.value, songArtist: event.target.value, songNotes: event.target.value});
       let listItem = JSON.stringify(this.state);
 
       fetch("https://tiny-lasagna-server.herokuapp.com/collections/playlisting", {
@@ -66,25 +52,60 @@ class PlayListForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form className="userinput">
+        <div>
+        <label htmlFor="userName">
           User Name:
-          <input onChange={this.handleUserNameChange} userName='userName' type="text" value={this.state.userName}/>
-            <br />
-          Artist / Band:
-          <input onChange={this.handleArtistBandChange} songArtist="songArtist" type="text" value={this.state.songArtist}/>
-            <br />
-          Song Title:
-          <input onChange={this.handleSongTitleChange} songTitle="songtitle" type="text" value={this.state.songTitle}/>
-            <br />
-          Notes about Song:
-          <input onChange={this.handleNotesAboutSongChange} songNotes="songNotes" type="text" value={this.state.songNotes}/>
         </label>
-            <br />
-        <input type="submit" value="Submit" />
+          <input className="userForm" onChange={this.handleUserNameChange} type="text" value={this.state.userName}/>
+        </div>
+        <div>
+        <label htmlFor="songArtist">
+          Artist / Band:
+        </label>
+          <input className="artistForm" onChange={this.handleArtistBandChange} type="text" value={this.state.songArtist}/>
+        </div>
+        <div>
+        <label htmlFor="songTitle">
+          Song Title:
+        </label>
+          <input className="titleForm" onChange={this.handleSongTitleChange} type="text" value={this.state.songTitle}/>
+        </div>
+        <div>
+        <label htmlFor="songNotes">
+          Notes about Song:
+        </label>
+          <input className="notesForm" onChange={this.handleNotesAboutSongChange} type="text" value={this.state.songNotes}/>
+        </div>
+        <input className="infoSubButton" type="submit" value="Submit" onClick={this.addToList} />
+        
       </form>
+
     )
   }
 }
+
+//   render() {
+//     return (
+//       <form className="userinput" onSubmit={this.handleSubmit}>
+//         <label>
+//           User Name:
+//           <input className="userForm" onChange={this.handleUserNameChange} userName='userName' type="text" value={this.state.userName}/>
+//             <br />
+//           Artist / Band:
+//           <input className="artistForm" onChange={this.handleArtistBandChange} songArtist="songArtist" type="text" value={this.state.songArtist}/>
+//             <br />
+//           Song Title:
+//           <input className="titleForm" onChange={this.handleSongTitleChange} songTitle="songtitle" type="text" value={this.state.songTitle}/>
+//             <br />
+//           Notes about Song:
+//           <input className="notesForm" onChange={this.handleNotesAboutSongChange} songNotes="songNotes" type="text" value={this.state.songNotes}/>
+//         </label>
+//             <br />
+//         <input className="infoSubButton" type="submit" value="Submit" />
+//       </form>
+//     )
+//   }
+// }
 
 export default PlayListForm;
